@@ -461,3 +461,18 @@ a,button,summary{-webkit-tap-highlight-color:rgba(65,70,154,.15);touch-action:ma
 .map__fallback .i{width:30px;height:30px}
 .map iframe{position:relative;z-index:1}
 .location__visual .map-card{width:100%}
+
+/* Canais digitais (substitui o endereço físico) */
+.addr__links{grid-column:2;display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;min-width:0}
+.addr__links a{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:8px 12px;border-radius:999px;background:var(--soft);color:var(--brand);font:600 .85rem Inter,sans-serif;transition:background .2s,color .2s}
+.addr__links a span{overflow-wrap:anywhere}
+.addr__links a:hover{background:var(--brand);color:#fff}
+.addr__links .i{width:16px;height:16px;flex:none}
+@media(max-width:480px){.location__address{grid-template-columns:1fr}.addr__ic{grid-row:auto}.addr__links{grid-column:1}}
+/* Título do hero: nunca corta em telas estreitas ou com fonte do sistema aumentada */
+.hero h1{overflow-wrap:break-word;hyphens:manual}
+@media(max-width:480px){.hero h1{font-size:min(2.1rem,9vw);letter-spacing:-.03em}}
+/* Textos longos (e-mail) nos links do rodapé, contato e canais digitais */
+.footer ul a,.footer ul a span{min-width:0}
+.footer ul a span,.contact__line strong,.addr__links a span{overflow-wrap:normal;word-break:normal}
+.contact__line > span:last-child{min-width:0}

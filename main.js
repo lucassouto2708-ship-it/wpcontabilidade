@@ -43,38 +43,34 @@
   /* ---------------- Dados opcionais (somente se preenchidos) ---------------- */
   const fc = $("#footer-contact");
   const li = (html) => { const l = document.createElement("li"); l.innerHTML = html; fc.appendChild(l); };
-  if (C.instagram) {
-    li(`<a href="${C.instagram}" target="_blank" rel="noopener"><svg class="i"><use href="#ic-ig"/></svg>Instagram</a>`);
-    const ig = $("#contact-ig"); ig.href = C.instagram; ig.hidden = false;
-  }
-  const A = C.address;
-  const addrLine1 = A ? `${A.street}, ${A.district}` : "";
-  const addrLine2 = A ? `${A.city}/${A.state} · <span class="nowrap">CEP ${A.zip}</span>` : "";
-  const mapsLink = C.mapQuery ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(C.mapQuery) : "";
-  if (C.phone) li(`<a href="tel:+${C.phone.number}" data-track="phone_click" data-label="footer"><svg class="i"><use href="#ic-phone"/></svg>${C.phone.display}</a>`);
-  if (C.email) li(`<a href="mailto:${C.email}" data-track="email_click" data-label="footer"><svg class="i"><use href="#ic-mail"/></svg>${C.email}</a>`);
-  if (A) li(`<a href="${mapsLink}" target="_blank" rel="noopener" data-track="map_click" data-label="footer" class="footer__addr"><svg class="i"><use href="#ic-pin"/></svg><span>${addrLine1}<br>${addrLine2}</span></a>`);
+  const igLabel = C.instagramHandle || "Instagram";
+  // e-mail quebra só depois do "@" em telas estreitas
+  const mailHtml = C.email ? C.email.replace("@", "@<wbr>") : "";
+  // telefone só aparece separado se for diferente do WhatsApp
+  const showPhone = C.phone && C.phone.number !== C.whatsapp.number;
+  if (showPhone) li(`<a href="tel:+${C.phone.number}" data-track="phone_click" data-label="footer"><svg class="i"><use href="#ic-phone"/></svg><span>${C.phone.display}</span></a>`);
+  if (C.email) li(`<a href="mailto:${C.email}" data-track="email_click" data-label="footer"><svg class="i"><use href="#ic-mail"/></svg><span>${mailHtml}</span></a>`);
+  if (C.instagram) li(`<a href="${C.instagram}" target="_blank" rel="noopener" data-track="instagram_click" data-label="footer"><svg class="i"><use href="#ic-ig"/></svg><span>${igLabel}</span></a>`);
 
   // Linhas extras na seção Contato
   const cl = $("#contact-lines");
   const line = (href, ic, label, value, ext, ev) => cl.insertAdjacentHTML("beforeend",
     `<a class="contact__line" href="${href}"${ext ? ' target="_blank" rel="noopener"' : ""} data-track="${ev}" data-label="contato"><span class="contact__ic"><svg class="i"><use href="#${ic}"/></svg></span><span><small>${label}</small><strong>${value}</strong></span></a>`);
-  if (C.phone) line(`tel:+${C.phone.number}`, "ic-phone", "Telefone", C.phone.display, false, "phone_click");
-  if (C.email) line(`mailto:${C.email}`, "ic-mail", "E-mail", C.email, false, "email_click");
-  if (A) line(mapsLink, "ic-pin", "Endereço", `${addrLine1}<br><span class="contact__sub">${addrLine2}</span>`, true, "map_click");
+  if (showPhone) line(`tel:+${C.phone.number}`, "ic-phone", "Telefone", C.phone.display, false, "phone_click");
+  if (C.email) line(`mailto:${C.email}`, "ic-mail", "E-mail", mailHtml, false, "email_click");
+  if (C.instagram) line(C.instagram, "ic-ig", "Instagram", igLabel, true, "instagram_click");
 
-  // Bloco de endereço + mapa na seção Atendimento
-  if (A) {
+  // Card "Canais digitais" na seção Atendimento nacional
+  const chips = [
+    C.email && `<a href="mailto:${C.email}" data-track="email_click" data-label="atendimento"><svg class="i"><use href="#ic-mail"/></svg><span>${mailHtml}</span></a>`,
+    C.instagram && `<a href="${C.instagram}" target="_blank" rel="noopener" data-track="instagram_click" data-label="atendimento"><svg class="i"><use href="#ic-ig"/></svg><span>${igLabel}</span></a>`,
+  ].filter(Boolean).join("");
+  if (chips) {
     const ab = $("#address-block");
-    ab.innerHTML = `<span class="addr__ic"><svg class="i"><use href="#ic-building"/></svg></span>
-      <div class="addr__txt"><small>Escritório</small><strong>${addrLine1}</strong><span>${addrLine2}</span></div>
-      <a class="addr__go" href="${mapsLink}" target="_blank" rel="noopener" data-track="map_click" data-label="atendimento">Como chegar <svg class="i"><use href="#ic-arrow"/></svg></a>`;
+    ab.innerHTML = `<span class="addr__ic"><svg class="i"><use href="#ic-globe"/></svg></span>
+      <div class="addr__txt"><small>Atendimento 100% digital</small><strong>Fale com a gente de onde estiver</strong></div>
+      <div class="addr__links">${chips}</div>`;
     ab.hidden = false;
-  }
-  if (C.mapQuery) {
-    const m = $("#map-block");
-    m.innerHTML = `<a class="map__fallback" href="${mapsLink}" target="_blank" rel="noopener" data-track="map_click" data-label="mapa"><svg class="i"><use href="#ic-pin"/></svg><span>Ver localização no Google Maps</span></a><iframe src="https://maps.google.com/maps?q=${encodeURIComponent(C.mapQuery)}&z=16&output=embed" loading="lazy" title="Mapa: ${addrLine1}, ${A.city}/${A.state}" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
-    m.hidden = false;
   }
   const legal = [C.crc && "CRC " + C.crc].filter(Boolean).join(" · ");
   if (legal) $("#footer-legal").textContent = " · " + legal;

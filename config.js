@@ -10,29 +10,20 @@ window.SITE_CONFIG = {
     tagline: "Assessoria, consultoria e soluções empresariais com atendimento em todo o Brasil.",
   },
 
-  // ⚠️ PENDENTE DE CONFIRMAÇÃO: o número informado (+55 33 9867-8932) tem 8 dígitos
-  // após o DDD. Celulares no Brasil usam 9 dígitos (ex.: 33 9 9867-8932).
-  // Confirme com o cliente e ajuste apenas os dois campos abaixo.
+  // WhatsApp e telefone da empresa
   whatsapp: {
-    number: "553398678932",          // somente dígitos: 55 + DDD + número
-    display: "+55 33 9867-8932",     // como aparece no site
+    number: "5533999978932",         // somente dígitos: 55 + DDD + número
+    display: "(33) 9 9997-8932",     // como aparece no site
   },
 
-  instagram: "",   // PENDENTE: ex. "https://instagram.com/perfil_oficial"
-  email: "pwcontabil@outlook.com",
-  phone: {                          // telefone do cadastro do CNPJ (ligação)
-    number: "553399115030",
-    display: "(33) 9911-5030",
+  instagram: "https://www.instagram.com/wpcontabil/",
+  instagramHandle: "@wpcontabil",
+  email: "empresarial@wpcontabilidadegroup.com",
+  phone: {                          // mesmo número, para ligações
+    number: "5533999978932",
+    display: "(33) 9 9997-8932",
   },
-  address: {
-    street: "R. Duarte Coelho, 617 — Apto 201",
-    district: "Morada do Vale",
-    city: "Governador Valadares",
-    state: "MG",
-    zip: "35057-150",
-  },
-  // Mapa e link "Como chegar" gerados a partir do endereço acima
-  mapQuery: "Rua Duarte Coelho, 617, Morada do Vale, Governador Valadares - MG, 35057-150",
+  // Atendimento 100% digital: endereço físico não é exibido no site.
   cnpj: "57.727.107/0001-53",
   crc: "",         // PENDENTE: registro profissional (CRC), se fornecido
   siteUrl: "",     // PENDENTE: ex. "https://www.wpcontabilidade.com.br"
