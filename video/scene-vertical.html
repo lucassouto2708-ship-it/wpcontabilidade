@@ -1,0 +1,94 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D26;--accent:#AEB2F0;--line:rgba(174,178,240,.55)}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Manrope,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;perspective:2200px;overflow:hidden}
+#glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 55% 0%,rgba(82,88,176,.45),transparent 70%),radial-gradient(ellipse 80% 80% at 50% 50%,transparent 50%,rgba(0,0,0,.6))}
+#cam{position:absolute;inset:0;transform-origin:60% 45%}
+.o{position:absolute;opacity:0;will-change:transform,opacity,filter}
+.browser{width:940px;border-radius:18px;overflow:hidden;background:#15183a;border:1px solid rgba(174,178,240,.25);box-shadow:0 60px 120px -30px rgba(0,0,0,.8)}
+.browser .bar{height:38px;display:flex;gap:8px;align-items:center;padding:0 16px;background:#1a1d44}
+.browser .bar i{width:11px;height:11px;border-radius:50%;background:#3a3e7a}
+.browser .bar span{margin-left:18px;font-size:13px;color:#9a9dc9;background:#11132f;padding:5px 16px;border-radius:8px}
+.browser img{display:block;width:100%}
+.phone{width:360px;height:760px;border-radius:52px;padding:12px;background:#1b1e48;border:2px solid var(--line);box-shadow:0 60px 120px -30px rgba(0,0,0,.85)}
+.phone .scr{width:100%;height:100%;border-radius:42px;overflow:hidden;background:#fff}
+.phone img{width:100%;display:block}
+.pop{border-radius:22px;border:1.5px solid var(--line);box-shadow:0 0 0 6px rgba(174,178,240,.06),0 50px 100px -20px rgba(0,0,0,.9),0 0 60px rgba(174,178,240,.18);overflow:hidden;background:#fff}
+.pop img{display:block;width:100%}
+.logo{width:150px;height:150px;border-radius:34px;background:linear-gradient(145deg,#4C51A8,#25295E);border:1.5px solid var(--line);display:grid;place-items:center;box-shadow:0 30px 80px -10px rgba(65,70,154,.7)}
+.logo img{width:96px}
+.cap{left:72px;right:72px;bottom:150px}
+.tag{font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.tag:before{content:"●";margin-right:10px;font-size:10px;vertical-align:2px}
+.ttl{font-size:64px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.sub{font-size:26px;color:#a7aad2;margin-top:12px}
+.tap{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.35);border:2px solid #fff;box-shadow:0 0 30px rgba(255,255,255,.5)}
+.brand{left:72px;top:90px;font-size:15px;font-weight:800;letter-spacing:.12em;display:flex;align-items:center;gap:12px}
+.brand img{width:30px}
+.center{left:0;right:0;text-align:center}
+</style></head><body>
+<div id="stage"><div id="glow"></div><div id="cam">
+ <div class="o" id="s1logo" style="left:465px;top:200px"><div class="logo"><img src="wp-mark-white.webp"></div></div>
+ <div class="o" id="s1phone" style="left:310px;top:430px;width:460px"><div class="phone" style="width:460px;height:960px"><div class="scr"><img src="shots/m-inicio.png"></div></div></div>
+ <div class="o cap" id="s1cap"><div class="tag">Contabilidade · Consultoria · Todo o Brasil</div><div class="ttl">WP CONTABILIDADE</div><div class="sub">Sua empresa em boas mãos.</div></div>
+ <div class="o" id="s2br" style="left:70px;top:220px"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>wpcontabilidade · serviços</span></div><img src="shots/d-servicos.png"></div></div>
+ <div class="o pop" id="s2c1" style="left:60px;top:740px;width:300px"><img src="shots/el-svc1.png"></div>
+ <div class="o pop" id="s2c2" style="left:390px;top:800px;width:300px"><img src="shots/el-svc2.png"></div>
+ <div class="o pop" id="s2c3" style="left:720px;top:740px;width:300px"><img src="shots/el-svc4.png"></div>
+ <div class="o tap" id="s2tap" style="left:180px;top:1130px"></div>
+ <div class="o" id="s3phone" style="left:330px;top:200px"><div class="phone" style="width:420px;height:880px"><div class="scr"><img id="s3img" src="shots/m-como-funciona.png"></div></div></div>
+ <div class="o pop" id="s3pop" style="left:40px;top:990px;width:1000px"><img src="shots/el-steps.png"></div>
+ <div class="o" id="s4br" style="left:70px;top:220px"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>wpcontabilidade · diferenciais</span></div><img src="shots/d-diferenciais.png"></div></div>
+ <div class="o pop" id="s4pop" style="left:40px;top:820px;width:1000px;background:#25295E"><img src="shots/el-dif.png"></div>
+ <div class="o" id="s5br" style="left:70px;top:220px;opacity:0"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>wpcontabilidade · contato</span></div><img src="shots/d-contato.png"></div></div>
+ <div class="o pop" id="s5form" style="left:190px;top:330px;width:700px"><img src="shots/el-form.png"></div>
+ <div class="o pop" id="s5faq" style="left:90px;top:1110px;width:900px"><img src="shots/el-faq.png"></div>
+ <div class="o tap" id="s5tap" style="left:510px;top:960px"></div>
+ <div class="o" id="s6logo" style="left:465px;top:230px"><div class="logo"><img src="wp-mark-white.webp"></div></div>
+ <div class="o center" id="s6txt" style="top:420px"><div class="ttl" style="font-size:72px">WP Contabilidade</div><div class="sub" style="font-size:30px">Mais do que contabilidade.<br><em>Uma parceria para o seu negócio.</em></div></div>
+ <div class="o" id="s6phone" style="left:90px;top:720px"><div class="phone"><div class="scr"><img src="shots/m-inicio.png"></div></div></div>
+ <div class="o" id="s6br" style="left:440px;top:900px;width:600px"><div class="browser" style="width:600px"><div class="bar"><i></i><i></i><i></i></div><img src="shots/d-inicio.png"></div></div>
+ <div class="o center" id="s6url" style="top:1660px;font-size:24px;color:#7f83b8;letter-spacing:.06em">lucassouto2708-ship-it.github.io/wpcontabilidade</div>
+</div>
+<div class="o brand" id="brand"><img src="wp-mark-white.webp">WP CONTABILIDADE</div>
+<div class="o cap" id="cap2"><div class="tag">Serviços · Abertura · IR · Certificado</div><div class="ttl">Soluções para cada necessidade.</div><div class="sub">Assessoria, regularização, imposto de renda e certificado digital.</div></div>
+<div class="o cap" id="cap3"><div class="tag">Como funciona · 4 passos</div><div class="ttl">Começar é mais simples do que parece.</div><div class="sub">Do primeiro contato ao acompanhamento contínuo.</div></div>
+<div class="o cap" id="cap4"><div class="tag">Diferenciais · Atendimento nacional</div><div class="ttl">Contabilidade próxima, de verdade.</div><div class="sub">Atenção personalizada e soluções integradas.</div></div>
+<div class="o cap" id="cap5"><div class="tag">Contato · WhatsApp · FAQ</div><div class="ttl">Fale com um especialista em minutos.</div><div class="sub">Formulário direto para o WhatsApp.</div></div>
+</div>
+<script>
+const E=t=>1-Math.pow(1-t,3), EIO=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const cl=(v)=>Math.max(0,Math.min(1,v));
+// enter/exit: element visible in [a,b]; props: x,y,s,r (rotY), blur
+function show(id,a,b,o={}){
+  const el=document.getElementById(id); const d=o.d||.7, dx=o.dx||0, dy=o.dy??30, ry=o.ry||0, rx=o.rx||0;
+  return t=>{let p=E(cl((t-a)/d)), q=EIO(cl((t-(b-.6))/.6)); if(b>=99)q=0;
+    const op=p*(1-q), bl=(1-p)*14+q*14, s=(o.s0||.94)+(1-(o.s0||.94))*p + (o.drift||0)*cl((t-a)/(b-a)) - q*.03;
+    el.style.opacity=op; el.style.filter=bl>.05?`blur(${bl}px)`:'none';
+    el.style.transform=`translate(${dx*(1-p)-q*40}px,${dy*(1-p)}px) rotateY(${ry}deg) rotateX(${rx}deg) scale(${s})`;}
+}
+function tap(id,t0){const el=document.getElementById(id);return t=>{const k=(t-t0)/.9;
+  if(k<0||k>1){el.style.opacity=0;return}const s=k<.35?1-E(k/.35)*.35:.65+E((k-.35)/.65)*.9;
+  el.style.opacity=k<.35?E(k/.35):1-E((k-.35)/.65); el.style.transform=`scale(${s})`;}}
+const T=[
+ show('brand',6,99,{dy:0}),
+ show('s1logo',.3,6.5,{s0:.7,dy:0}), show('s1cap',.9,6.5,{dy:24}), show('s1phone',.5,6.5,{dx:120,dy:0,ry:-14,drift:.04}),
+ show('s2br',6.3,13,{dx:80,dy:0,ry:-8,drift:.03}), show('cap2',6.6,13),
+ show('s2c1',7.6,13,{dx:-40}), show('s2c2',8.2,13,{dx:40}), show('s2c3',8.6,13,{dx:40}), tap('s2tap',10.2),
+ show('s3phone',13.3,20,{dx:-80,dy:0,ry:10,drift:.03}), show('s3pop',14.4,20,{dx:60}), show('cap3',13.6,20),
+ show('s4br',20.3,27,{dy:40,rx:6,drift:.03}), show('s4pop',21.6,27,{s0:.88}), show('cap4',20.6,27),
+ show('s5br',27.3,27.31), show('s5form',28.4,34,{dx:60}), show('s5faq',29.2,34,{dy:40}), show('cap5',27.6,34), tap('s5tap',31.4),
+ show('s6phone',34.4,99,{dx:-100,dy:0,ry:12}), show('s6br',34.7,99,{dx:100,dy:0,ry:-12}), show('s6logo',35.2,99,{s0:.6,dy:0}),
+ show('s6txt',35.8,99), show('s6url',36.6,99,{dy:10}),
+];
+const cam=document.getElementById('cam'), s3img=document.getElementById('s3img');
+window.setT=t=>{T.forEach(f=>f(t));
+ const sc=1+((t%6.7)/6.7)*.025; cam.style.transform=`scale(${sc})`;
+ s3img.style.transform=`translateY(${-Math.max(0,Math.min(1,(t-15.5)/3.5))*0}px)`;
+ const fade=Math.min(cl(t/.4),cl((40-t)/.6)); document.body.style.opacity=fade;};
+setT(0);
+</script></body></html>
